@@ -2,6 +2,7 @@
 
 import './App.css';
 import movieData from './Data';
+import Movies from './components/Movies/Movies';
 import { useState } from 'react';
 
 function App() {
