@@ -1,0 +1,14 @@
+.poster {
+  width: 300px;
+  height: 450px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin: 5px;
+  background-color: darkslategray;
+  border-style: solid;
+  border-color: bisque;
+}
+
+h3 {
+  text-shadow: 2px 2px 2px white;
+}

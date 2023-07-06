@@ -17,7 +17,7 @@ function Movies(props) {
   })
   
   return (
-    <div className='ideas-container'>
+    <div className='movies-container'>
       {moviePosters}
     </div>
   )
