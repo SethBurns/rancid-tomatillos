@@ -1,0 +1,12 @@
+.movie_details {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.details_container {
+  background-color: black;
+  opacity: 80%;
+  color: white;
+  padding: 2em;
+}
