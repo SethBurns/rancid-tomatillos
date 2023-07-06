@@ -1,0 +1,21 @@
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+.poster {
+  flex-shrink: 0;
+  width: 300px;
+  height: 450px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  margin: 5px;
+  background-color: darkslategray;
+  border-style: solid;
+  border-color: bisque;
+  border-radius: 10px;
+}
+
+h3 {
+  max-width: 300px;
+}
