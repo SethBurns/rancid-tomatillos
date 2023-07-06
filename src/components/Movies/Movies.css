@@ -1,6 +1,5 @@
 .movies-container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-content: center;
+  overflow-x: scroll;
+  width: 100%;
 }

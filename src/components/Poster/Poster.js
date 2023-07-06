@@ -4,7 +4,9 @@ import './Poster.css';
 
 function Poster({ title, poster_path, id, deleteIdea}){
   return (
-    <div className='poster' style={{backgroundImage: `url(${poster_path})`}}>
+    <div>
+      <div className='poster' style={{backgroundImage: `url(${poster_path})`}}>
+      </div>
       <h3>{title}</h3>
     </div>
   )
