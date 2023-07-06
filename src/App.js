@@ -7,7 +7,7 @@ import { useState } from 'react';
 
 function App() {
 
-  const [movies, setMovies] = useState(movieData);
+  const [movies, setMovies] = useState(movieData.movies);
 
   return (
     <main className='App'>

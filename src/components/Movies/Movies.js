@@ -4,16 +4,14 @@ import './Movies.css'
 import Poster from '../Poster/Poster';
 
 function Movies(props) {
-  const [movies] = props.movies;
 
-  const moviePosters = movies.map(movie => {
-    console.log(movies)
+  const moviePosters = props.movies.map(movie => {
     return (
       <Poster
-        title={movies.title}
-        poster_path={movies.poster_path}
-        id={movies.id}
-        key={movies.id}
+        title={movie.title}
+        poster_path={movie.poster_path}
+        id={movie.id}
+        key={movie.id}
       />  
     )
   })
