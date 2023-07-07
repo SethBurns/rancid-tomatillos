@@ -7,21 +7,26 @@ import MovieDetails from './components/MovieDetails/MovieDetails';
 import { useState } from 'react';
 
 function App() {
+  console.log('render')
 
   const [movies, setMovies] = useState(movieData.movies);
   const [selectedMovie, setSelectedMovie] = useState(null);
+  const [show, setShow] = useState(true);
 
   const findMovie =(id) => {
     const movie = movies.find(movie => movie.id === id)
     setSelectedMovie(movie)
-    console.log(selectedMovie)
+  }
+
+  function returnHome (props) {
+    setSelectedMovie(null);
   }
 
   return (
     <main className='App'>
       <h1>Rancid Tomatillos</h1>
-      <Movies movies={movies} findMovie={findMovie}/>
-      {selectedMovie && <MovieDetails movie={selectedMovie} />}
+      {!selectedMovie && <Movies movies={movies} findMovie={findMovie}/>}
+      {selectedMovie && <MovieDetails movie={selectedMovie} returnHome={returnHome}/>}
     </main>
   );
 }

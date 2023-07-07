@@ -2,7 +2,6 @@
 
 import './Movies.css'
 import Poster from '../Poster/Poster';
-import MovieDetails from '../MovieDetails/MovieDetails';
 
 function Movies({movies, findMovie}) {
 

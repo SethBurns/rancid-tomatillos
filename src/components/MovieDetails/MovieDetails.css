@@ -10,3 +10,11 @@
   color: white;
   padding: 2em;
 }
+
+.btn_exit {
+  background-color: red;
+  border-radius: 20px;
+  float: left;
+  border: 0;
+  margin: 5px;
+}
