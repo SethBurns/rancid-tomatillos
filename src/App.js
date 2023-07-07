@@ -11,14 +11,13 @@ function App() {
 
   const [movies, setMovies] = useState(movieData.movies);
   const [selectedMovie, setSelectedMovie] = useState(null);
-  const [show, setShow] = useState(true);
 
   const findMovie =(id) => {
     const movie = movies.find(movie => movie.id === id)
     setSelectedMovie(movie)
   }
 
-  function returnHome (props) {
+  function returnHome () {
     setSelectedMovie(null);
   }
 
