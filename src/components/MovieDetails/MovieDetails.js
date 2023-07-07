@@ -12,6 +12,7 @@ export default function MovieDetails ({ movie, returnHome } ) {
       <div className="details_container">
         <p>Average Rating: {movie.average_rating.toFixed(2)}</p>
         <p>Release Date: {movie.release_date}</p>
+        <p>Overview: {movie.overview}</p>
       </div>
     </div>
   )
