@@ -20,7 +20,6 @@ function Movies({movies, findMovie}) {
     )
   })
 
-  
   return (
     <div className='movies-container'>
       {moviePosters}

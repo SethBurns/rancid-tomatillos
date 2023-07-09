@@ -8,13 +8,11 @@ import MovieDetails from './components/MovieDetails/MovieDetails';
 import { useState, useEffect } from 'react';
 
 function App() {
-  // console.log('render')
 
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
-  // const [show, setShow] = useState(true);
   const [error, setError] = useState('');
-  const [videos, setVideos] = useState([])
+  const [videos, setVideos] = useState([]);
 
   const getMovies = async () => {
     const url = `https://rancid-tomatillos.herokuapp.com/api/v2/movies`;
@@ -33,16 +31,9 @@ function App() {
     getMovies();
   }, []);
 
-  // useEffect(() => {
-  //   findMovie();
-  // }, [show]);
-
   const findMovie = async (id) => {
-    console.log('id', id)
-    // setShow(false);
-
     const url1 = `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`;
-    const url2 = `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}/videos`
+    const url2 = `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}/videos`;
     setError('');
 
     try {
@@ -61,7 +52,7 @@ function App() {
 
   function returnHome() {
     setSelectedMovie(null);
-  }
+  };
 
   return (
     <main className="App">
@@ -70,6 +61,6 @@ function App() {
       {selectedMovie && <MovieDetails movie={selectedMovie} returnHome={returnHome} videos={videos} />}
     </main>
   );
-}
+};
 
 export default App;
