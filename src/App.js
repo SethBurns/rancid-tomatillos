@@ -2,6 +2,7 @@
 
 import './App.css';
 // import movieData from './Data';
+import Header from './components/Header/Header';
 import Movies from './components/Movies/Movies';
 import MovieDetails from './components/MovieDetails/MovieDetails';
 import { useState, useEffect } from 'react';
@@ -64,7 +65,7 @@ function App() {
 
   return (
     <main className="App">
-      <h1>Rancid Tomatillos</h1>
+      <Header/>
       {!selectedMovie && <Movies movies={movies} findMovie={findMovie} />}
       {selectedMovie && <MovieDetails movie={selectedMovie} returnHome={returnHome} videos={videos} />}
     </main>
