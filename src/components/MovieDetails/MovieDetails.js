@@ -1,7 +1,7 @@
 // MovieDetails.js //
 
 import './MovieDetails.css'
-import VideoLinks from '../VideoLinks/VideoLinks'
+// import VideoLinks from '../VideoLinks/VideoLinks'
 
 export default function MovieDetails ({ movie, returnHome, videos } ) {
   return (

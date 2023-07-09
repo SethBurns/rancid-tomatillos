@@ -32,4 +32,5 @@ h1 {
   float: left;
   border: 0;
   margin: 5px;
+  cursor: pointer;
 }

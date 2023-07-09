@@ -20,12 +20,17 @@ function App() {
 
     try {
       const response = await fetch(url);
-      const movies = await response.json();
-      setMovies(movies.movies);
-    } catch (error) {
+      if (response.ok) {
+        const movieResponse = await response.json();
+        setMovies(movieResponse.movies);
+      } else {
+        console.log(response)
+        setError(`${response.status} ${response.statusText}`);
+      }
+      } catch (error) {
       setError(error.message);
     }
-  };
+  }
 
   useEffect(() => {
     getMovies();
@@ -35,13 +40,16 @@ function App() {
     const url1 = `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`;
     // const url2 = `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}/videos`;
     setError('');
-    console.log('findMovie')
-
     try {
       const response1 = await fetch(url1);
-      const movieResponse = await response1.json();
-      setSelectedMovie(movieResponse.movie);
-     } catch (error) {
+      if (response1.ok) {
+        const movieResponse = await response1.json();
+        setSelectedMovie(movieResponse.movie);
+      } else {
+        console.log(response1)
+        setError(`${response1.status} ${response1.statusText}`);
+      }
+    } catch (error) {
       setError(error.message);
     }
 
@@ -60,6 +68,7 @@ function App() {
   return (
     <main className="App">
       <Header/>
+      <p>{error}</p>
       {!selectedMovie && <Movies movies={movies} findMovie={findMovie} />}
       {selectedMovie && <MovieDetails movie={selectedMovie} returnHome={returnHome}/>}
     </main>
