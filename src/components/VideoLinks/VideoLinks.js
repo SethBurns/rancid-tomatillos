@@ -1,12 +1,13 @@
 import './VideoLinks.css';
+import YouTubePlayer from '../YouTubePlayer/YouTubePlayer';
+
 
 function VideoLinks({ videos }) {
-  console.log('videos', videos);
   const buttons = videos.map((video) => {
     return (
-      <form>
-        <button formAction={`https://www.youtube.com/watch?v=${video.key}&list=LL`}>{video.type}</button>
-      </form>
+      <div className='youtube-video'>
+        <YouTubePlayer id={video.key} />
+      </div>
     );
   });
 
