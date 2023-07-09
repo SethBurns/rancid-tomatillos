@@ -1,9 +1,10 @@
 // MovieDetails.js //
 
 import './MovieDetails.css'
+import VideoLinks from '../VideoLinks/VideoLinks'
 
-export default function MovieDetails ({ movie, returnHome } ) {
-  
+export default function MovieDetails ({ movie, returnHome, videos } ) {
+  console.log(videos)
   return (
     <div className="movie_details" style={{backgroundImage: `url(${movie.backdrop_path})`}}>
       <div className="btn_div">
@@ -23,6 +24,7 @@ export default function MovieDetails ({ movie, returnHome } ) {
         <p>Budget: ${movie.budget.toLocaleString()}</p>
         <p>Revenue: ${movie.revenue.toLocaleString()}</p>
         <p>Profit: ${(movie.revenue - movie.budget).toLocaleString()}</p>
+        <VideoLinks videos={videos} />
       </div>
     </div>
   )

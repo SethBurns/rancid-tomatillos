@@ -13,6 +13,7 @@ function App() {
   const [selectedMovie, setSelectedMovie] = useState(null);
   // const [show, setShow] = useState(true);
   const [error, setError] = useState('');
+  const [videos, setVideos] = useState([])
 
   const getMovies = async () => {
     const url = `https://rancid-tomatillos.herokuapp.com/api/v2/movies`;
@@ -39,15 +40,19 @@ function App() {
     console.log('id', id)
     // setShow(false);
 
-    const url = `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`;
+    const url1 = `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`;
+    const url2 = `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}/videos`
     setError('');
 
     try {
-      const response = await fetch(url);
-      const movie = await response.json();
-      console.log('movie', movie)
-      setSelectedMovie(movie.movie);
+      const response1 = await fetch(url1);
+      const movieResponse = await response1.json();
+      setSelectedMovie(movieResponse.movie);
       console.log('selectedMovie', selectedMovie);
+
+      const response2 = await fetch(url2);
+      const videosResponse = await response2.json();
+      setVideos(videosResponse.videos)
     } catch (error) {
       setError(error.message);
     }
@@ -61,7 +66,7 @@ function App() {
     <main className="App">
       <h1>Rancid Tomatillos</h1>
       {!selectedMovie && <Movies movies={movies} findMovie={findMovie} />}
-      {selectedMovie && <MovieDetails movie={selectedMovie} returnHome={returnHome} />}
+      {selectedMovie && <MovieDetails movie={selectedMovie} returnHome={returnHome} videos={videos} />}
     </main>
   );
 }
