@@ -2,18 +2,17 @@
 
 import './App.css';
 // import movieData from './Data';
+import Header from './components/Header/Header';
 import Movies from './components/Movies/Movies';
 import MovieDetails from './components/MovieDetails/MovieDetails';
 import { useState, useEffect } from 'react';
 
 function App() {
-  // console.log('render')
 
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
-  // const [show, setShow] = useState(true);
   const [error, setError] = useState('');
-  const [videos, setVideos] = useState([])
+  // const [videos, setVideos] = useState([]);
 
   const getMovies = async () => {
     const url = `https://rancid-tomatillos.herokuapp.com/api/v2/movies`;
@@ -21,54 +20,59 @@ function App() {
 
     try {
       const response = await fetch(url);
-      const movies = await response.json();
-      setMovies(movies.movies);
-    } catch (error) {
+      if (response.ok) {
+        const movieResponse = await response.json();
+        setMovies(movieResponse.movies);
+      } else {
+        console.log(response)
+        setError(`${response.status} ${response.statusText}`);
+      }
+      } catch (error) {
       setError(error.message);
     }
-  };
+  }
 
   useEffect(() => {
     getMovies();
   }, []);
 
-  // useEffect(() => {
-  //   findMovie();
-  // }, [show]);
-
   const findMovie = async (id) => {
-    console.log('id', id)
-    // setShow(false);
-
     const url1 = `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`;
-    const url2 = `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}/videos`
+    // const url2 = `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}/videos`;
     setError('');
-
     try {
       const response1 = await fetch(url1);
-      const movieResponse = await response1.json();
-      setSelectedMovie(movieResponse.movie);
-      console.log('selectedMovie', selectedMovie);
-
-      const response2 = await fetch(url2);
-      const videosResponse = await response2.json();
-      setVideos(videosResponse.videos)
+      if (response1.ok) {
+        const movieResponse = await response1.json();
+        setSelectedMovie(movieResponse.movie);
+      } else {
+        console.log(response1)
+        setError(`${response1.status} ${response1.statusText}`);
+      }
     } catch (error) {
       setError(error.message);
     }
+
+    //   const response2 = await fetch(url2);
+    //   const videosResponse = await response2.json();
+    //   setVideos(videosResponse.videos)
+    // } catch (error) {
+    //   setError(error.message);
+    // }
   };
 
   function returnHome() {
     setSelectedMovie(null);
-  }
+  };
 
   return (
     <main className="App">
-      <h1>Rancid Tomatillos</h1>
+      <Header/>
+      <p>{error}</p>
       {!selectedMovie && <Movies movies={movies} findMovie={findMovie} />}
-      {selectedMovie && <MovieDetails movie={selectedMovie} returnHome={returnHome} videos={videos} />}
+      {selectedMovie && <MovieDetails movie={selectedMovie} returnHome={returnHome}/>}
     </main>
   );
-}
+};
 
 export default App;

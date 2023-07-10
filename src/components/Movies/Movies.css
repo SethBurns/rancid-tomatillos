@@ -1,5 +1,8 @@
+/* Movies.css */
+
 .movies-container {
   display: flex;
   overflow-x: scroll;
   width: 100%;
+  border: solid rgb(104, 103, 103) 4px;
 }
