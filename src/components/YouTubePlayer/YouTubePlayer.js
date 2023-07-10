@@ -6,8 +6,8 @@ const YouTubePlayer = ({id}) => {
     const videoId = `${id}`;
 
     const opts = {
-      height: '360',
-      width: '640',
+      height: '225',
+      width: '400',
       playerVars: {
         autoplay: 0,
       },

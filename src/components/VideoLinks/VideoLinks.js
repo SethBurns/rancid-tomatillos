@@ -3,15 +3,16 @@ import YouTubePlayer from '../YouTubePlayer/YouTubePlayer';
 
 
 function VideoLinks({ videos }) {
-  const buttons = videos.map((video) => {
+  const filteredVideos = videos.filter((video) => video.type === 'Trailer');
+  const renderedVideos = filteredVideos.map((video) => {
     return (
-      <div className='youtube-video'>
+      <div className='youtube-video' key={video.key}>
         <YouTubePlayer id={video.key} />
       </div>
     );
   });
 
-  return <div className="button-container">{buttons}</div>;
+  return <div className="button-container">{renderedVideos}</div>;
  }
 
  export default VideoLinks;
