@@ -1,11 +1,12 @@
 // Poster.js //
 
 import './Poster.css';
+import { Link } from 'react-router-dom';
 
-export default function Poster({ title, poster_path, id, findMovie}){
+export default function Poster({ title, poster_path, id, setMovieId}){
   return (
     <div>
-      <img className='poster' alt="movie poster" onClick={() => findMovie(id)} src={poster_path}/>
+      <Link to={`/${id}`}><img className='poster' alt="movie poster" onClick={() => setMovieId(id)} src={poster_path}/></Link>
       <h3>{title}</h3>
     </div>
   )

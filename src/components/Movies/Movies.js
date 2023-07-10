@@ -3,7 +3,7 @@
 import './Movies.css'
 import Poster from '../Poster/Poster';
 
-function Movies({movies, findMovie}) {
+function Movies({movies, setMovieId}) {
 
   const moviePosters = movies.map(movie => {
     return (
@@ -15,7 +15,7 @@ function Movies({movies, findMovie}) {
         poster_path={movie.poster_path}
         id={movie.id}
         key={movie.id}
-        findMovie={findMovie}
+        setMovieId={setMovieId}
       />  
     )
   })
