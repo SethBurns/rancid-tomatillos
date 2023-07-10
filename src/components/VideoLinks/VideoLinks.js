@@ -12,6 +12,6 @@ function VideoLinks({ videos }) {
   });
 
   return <div className="button-container">{buttons}</div>;
-}
+ }
 
-export default VideoLinks;
+ export default VideoLinks;
