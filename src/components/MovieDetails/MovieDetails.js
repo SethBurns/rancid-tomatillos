@@ -1,7 +1,7 @@
 // MovieDetails.js //
 
 import './MovieDetails.css'
-// import VideoLinks from '../VideoLinks/VideoLinks'
+import VideoLinks from '../VideoLinks/VideoLinks'
 
 export default function MovieDetails ({ movie, returnHome, videos } ) {
   return (
@@ -23,7 +23,7 @@ export default function MovieDetails ({ movie, returnHome, videos } ) {
         <p>Budget: ${movie.budget.toLocaleString()}</p>
         <p>Revenue: ${movie.revenue.toLocaleString()}</p>
         <p>Profit: ${(movie.revenue - movie.budget).toLocaleString()}</p>
-        {/* <VideoLinks videos={videos} /> */}
+        <VideoLinks videos={videos} />
       </div>
     </div>
   )
