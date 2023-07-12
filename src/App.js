@@ -1,6 +1,7 @@
 // App.js //
 
 import './App.css';
+import { Routes, Route } from 'react-router-dom';
 // import movieData from './Data';
 import Header from './components/Header/Header';
 import Movies from './components/Movies/Movies';
@@ -9,10 +10,20 @@ import { useState, useEffect } from 'react';
 
 function App() {
 
+  // DATA MODEL //
+
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [error, setError] = useState('');
   const [videos, setVideos] = useState([]);
+
+
+
+  // API CALLS //
+
+  useEffect(() => {
+    getMovies();
+  }, []);
 
   const getMovies = async () => {
     const url = `https://rancid-tomatillos.herokuapp.com/api/v2/movies`;
@@ -40,13 +51,16 @@ function App() {
     const url1 = `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`;
     const url2 = `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}/videos`;
     setError('');
+    setSelectedMovie('');
+
     try {
       const response1 = await fetch(url1);
       if (response1.ok) {
         const movieResponse = await response1.json();
         setSelectedMovie(movieResponse.movie);
+        console.log(selectedMovie);
       } else {
-        console.log(response1)
+        console.log(response1);
         setError(`${response1.status} ${response1.statusText}`);
       }
     } catch (error) {
@@ -66,18 +80,17 @@ function App() {
     }
   };
 
-  function returnHome() {
-    setSelectedMovie(null);
-  };
-
   return (
-    <main className="App">
-      <Header/>
-      <p>{error}</p>
-      {!selectedMovie && <Movies movies={movies} findMovie={findMovie} />}
-      {selectedMovie && <MovieDetails movie={selectedMovie} returnHome={returnHome} videos={videos}/>}
-    </main>
-  );
+      <main className="App">      
+        <Header/>
+        <p>{error}</p>
+        <Routes>
+          <Route path="/" element = {<Movies movies={movies} findMovie={findMovie} />}></Route>
+          {/* <Route path="/:id" element={<MovieDetails movie={selectedMovie} returnHome={returnHome}/>}></Route> */}
+          <Route path="/:id" element={<MovieDetails selectedMovie={selectedMovie} findMovie={findMovie} videos={videos}/>}></Route>
+        </Routes>
+      </main>
+  )
 };
 
 export default App;
