@@ -3,8 +3,9 @@
 import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import './MovieDetails.css'
+import VideoLinks from '../VideoLinks/VideoLinks'
 
-export default function MovieDetails({ returnHome, findMovie, selectedMovie }) {
+export default function MovieDetails({ findMovie, selectedMovie, videos }) {
   const {id} = useParams()
 
   useEffect(() => {
@@ -30,7 +31,7 @@ export default function MovieDetails({ returnHome, findMovie, selectedMovie }) {
         <p>Budget: ${selectedMovie?.budget?.toLocaleString()}</p>
         <p>Revenue: ${selectedMovie?.revenue?.toLocaleString()}</p>
         <p>Profit: ${(selectedMovie?.revenue - selectedMovie?.budget)?.toLocaleString()}</p>
-        {/* <VideoLinks videos={videos} /> */}
+        <VideoLinks videos={videos} />
       </div>
     </div>
   );

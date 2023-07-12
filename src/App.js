@@ -15,8 +15,7 @@ function App() {
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [error, setError] = useState('');
-  // const [movieId, setMovieId] = useState('');
-  // const [videos, setVideos] = useState([]);
+  const [videos, setVideos] = useState([]);
 
 
 
@@ -44,9 +43,13 @@ function App() {
     }
   }
 
-  const findMovie = async (movieId) => {
-    const url1 = `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${movieId}`;
-    // const url2 = `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${movieId}/videos`;
+  useEffect(() => {
+    getMovies();
+  }, []);
+
+  const findMovie = async (id) => {
+    const url1 = `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`;
+    const url2 = `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}/videos`;
     setError('');
     setSelectedMovie('');
 
@@ -63,6 +66,18 @@ function App() {
     } catch (error) {
       setError(error.message);
     }
+    try {
+      const response2 = await fetch(url2);
+      if (response2.ok) {
+      const videosResponse = await response2.json();
+      setVideos(videosResponse.videos)
+      } else {
+        console.log(response2)
+        setError(`${response2.status} ${response2.statusText}`)
+      }
+    } catch (error) {
+      setError(error.message);
+    }
   };
 
   return (
@@ -72,7 +87,7 @@ function App() {
         <Routes>
           <Route path="/" element = {<Movies movies={movies} findMovie={findMovie} />}></Route>
           {/* <Route path="/:id" element={<MovieDetails movie={selectedMovie} returnHome={returnHome}/>}></Route> */}
-          <Route path="/:id" element={<MovieDetails selectedMovie={selectedMovie} findMovie={findMovie} />}></Route>
+          <Route path="/:id" element={<MovieDetails selectedMovie={selectedMovie} findMovie={findMovie} videos={videos}/>}></Route>
         </Routes>
       </main>
   )
