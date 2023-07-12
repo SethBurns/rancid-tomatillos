@@ -1,40 +1,20 @@
 // MovieDetails.js //
 
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import './MovieDetails.css'
 
-export default function MovieDetails({ movieId, returnHome, videos }) {
-  const [selectedMovie, setSelectedMovie] = useState(null);
-  const [error, setError] = useState('');
-
-  const findMovie = async (movieId) => {
-    const url1 = `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${movieId}`;
-    // const url2 = `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${movieId}/videos`;
-    setError('');
-
-    try {
-      const response1 = await fetch(url1);
-      if (response1.ok) {
-        const movieResponse = await response1.json();
-        setSelectedMovie(movieResponse.movie);
-        console.log(selectedMovie);
-      } else {
-        console.log(response1);
-        setError(`${response1.status} ${response1.statusText}`);
-      }
-    } catch (error) {
-      setError(error.message);
-    }
-  };
+export default function MovieDetails({ returnHome, findMovie, selectedMovie }) {
+  const {id} = useParams()
 
   useEffect(() => {
-    findMovie(movieId);
+    findMovie(id);
   }, []);
 
   return (
     <div className="movie_details" style={{ backgroundImage: `url(${selectedMovie?.backdrop_path})` }}>
       <div className="btn_div">
-        <Link to="/"><button className="btn_exit" onClick={() => returnHome(selectedMovie)}>X</button></Link>
+        <Link to="/"><button className="btn_exit">X</button></Link>
       </div>
       <div className="movie_details_left">
         <h1>{selectedMovie?.title}</h1>

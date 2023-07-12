@@ -1,7 +1,7 @@
 // App.js //
 
 import './App.css';
-import { Link, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 // import movieData from './Data';
 import Header from './components/Header/Header';
 import Movies from './components/Movies/Movies';
@@ -13,7 +13,7 @@ function App() {
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [error, setError] = useState('');
-  const [movieId, setMovieId] = useState('');
+  // const [movieId, setMovieId] = useState('');
   // const [videos, setVideos] = useState([]);
 
   const getMovies = async () => {
@@ -38,30 +38,25 @@ function App() {
     getMovies();
   }, []);
 
-  // const findMovie = async (id) => {
-  //   const url1 = `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`;
-  //   // const url2 = `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}/videos`;
-  //   setError('');
-  //   try {
-  //     const response1 = await fetch(url1);
-  //     if (response1.ok) {
-  //       const movieResponse = await response1.json();
-  //       setSelectedMovie(movieResponse.movie);
-  //     } else {
-  //       console.log(response1)
-  //       setError(`${response1.status} ${response1.statusText}`);
-  //     }
-  //   } catch (error) {
-  //     setError(error.message);
-  //   }
+  const findMovie = async (movieId) => {
+    const url1 = `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${movieId}`;
+    // const url2 = `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${movieId}/videos`;
+    setError('');
 
-    //   const response2 = await fetch(url2);
-    //   const videosResponse = await response2.json();
-    //   setVideos(videosResponse.videos)
-    // } catch (error) {
-    //   setError(error.message);
-    // }
-
+    try {
+      const response1 = await fetch(url1);
+      if (response1.ok) {
+        const movieResponse = await response1.json();
+        setSelectedMovie(movieResponse.movie);
+        console.log(selectedMovie);
+      } else {
+        console.log(response1);
+        setError(`${response1.status} ${response1.statusText}`);
+      }
+    } catch (error) {
+      setError(error.message);
+    }
+  };
 
   function returnHome() {
     setSelectedMovie(null);
@@ -73,9 +68,9 @@ function App() {
         <Header/>
         <p>{error}</p>
         <Routes>
-        <Route path="/" element = {<Movies movies={movies} setMovieId={setMovieId} />}></Route>
-        {/* <Route path="/:id" element={<MovieDetails movie={selectedMovie} returnHome={returnHome}/>}></Route> */}
-        <Route path="/:id" element={<MovieDetails movieId={movieId} returnHome={returnHome}/>}></Route>
+          <Route path="/" element = {<Movies movies={movies} findMovie={findMovie} />}></Route>
+          {/* <Route path="/:id" element={<MovieDetails movie={selectedMovie} returnHome={returnHome}/>}></Route> */}
+          <Route path="/:id" element={<MovieDetails selectedMovie={selectedMovie} findMovie={findMovie} returnHome={returnHome}/>}></Route>
         </Routes>
       </main>
   )
