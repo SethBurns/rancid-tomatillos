@@ -3,7 +3,6 @@ import React from 'react'
 import YouTube from 'react-youtube'
 
 const YouTubePlayer = ({id}) => {
-    const videoId = `${id}`;
 
     const opts = {
       height: '225',
