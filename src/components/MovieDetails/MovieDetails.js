@@ -29,9 +29,9 @@ export default function MovieDetails({ findMovie, selectedMovie, videos }) {
         <div className="movie_details_right">
           <p>Average Rating: {selectedMovie.average_rating.toFixed(2)}</p>
           <p>Release Date: {selectedMovie.release_date}</p>
-          <p>Budget: ${selectedMovie.budget.toLocaleString()}</p>
-          <p>Revenue: ${selectedMovie.revenue.toLocaleString()}</p>
-          <p>Profit: ${(selectedMovie.revenue - selectedMovie.budget).toLocaleString()}</p>
+          {!selectedMovie.budget && <p></p> || <p className="budget">Budget: ${selectedMovie.budget.toLocaleString()}</p>}
+          {!selectedMovie.budget && <p></p> || <p className="revenue">Revenue: ${selectedMovie.revenue.toLocaleString()}</p>}
+          {!selectedMovie.budget && <p></p> || <p className="profit">Profit: ${(selectedMovie.revenue - selectedMovie.budget).toLocaleString()}</p>}
           <VideoLinks videos={videos} />
         </div>
       </div>
