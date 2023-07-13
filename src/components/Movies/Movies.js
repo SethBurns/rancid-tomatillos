@@ -2,8 +2,9 @@
 
 import './Movies.css'
 import Poster from '../Poster/Poster';
+import PropTypes from 'prop-types'
 
-function Movies({movies, setMovieId}) {
+function Movies({movies}) {
 
   const moviePosters = movies.map(movie => {
     return (
@@ -15,7 +16,6 @@ function Movies({movies, setMovieId}) {
         poster_path={movie.poster_path}
         id={movie.id}
         key={movie.id}
-        setMovieId={setMovieId}
       />  
     )
   })
@@ -25,6 +25,10 @@ function Movies({movies, setMovieId}) {
       {moviePosters}
     </div>
   )
+}
+
+Movies.propTypes = {
+  movies: PropTypes.arrayOf(PropTypes.object).isRequired
 }
 
 export default Movies;
