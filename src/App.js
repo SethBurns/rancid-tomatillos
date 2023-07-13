@@ -1,5 +1,7 @@
 // App.js //
 
+// IMPORTS //
+
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header/Header';
@@ -15,8 +17,6 @@ function App() {
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [error, setError] = useState('');
   const [videos, setVideos] = useState([]);
-
-
 
   // API CALLS //
 
@@ -75,12 +75,14 @@ function App() {
     }
   };
 
+  // RENDER //
+
   return (
       <main className="App">      
         <Header/>
         <p>{error}</p>
         <Routes>
-          <Route path="/" element = {<Movies movies={movies} findMovie={findMovie} />}></Route>
+          <Route path="/" element = {<Movies movies={movies} />}></Route>
           <Route path="/:id" element={<MovieDetails selectedMovie={selectedMovie} findMovie={findMovie} videos={videos}/>}></Route>
         </Routes>
       </main>

@@ -25,10 +25,10 @@ function Movies({movies}) {
       {moviePosters}
     </div>
   )
-}
+};
 
 Movies.propTypes = {
   movies: PropTypes.arrayOf(PropTypes.object).isRequired
-}
+};
 
 export default Movies;
