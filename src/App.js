@@ -54,7 +54,6 @@ function App() {
       if (response1.ok) {
         const movieResponse = await response1.json();
         setSelectedMovie(movieResponse.movie);
-        console.log(selectedMovie);
       } else {
         console.log(response1);
         setError(`${response1.status} ${response1.statusText}`);

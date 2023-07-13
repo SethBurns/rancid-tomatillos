@@ -1,9 +1,13 @@
+// VideoLinks.js //
+
 import './VideoLinks.css';
 import YouTubePlayer from '../YouTubePlayer/YouTubePlayer';
+import PropTypes from 'prop-types';
 
-
-function VideoLinks({ videos }) {
+export default function VideoLinks({ videos }) {
+  
   const filteredVideos = videos.filter((video) => video.type === 'Trailer');
+  
   const renderedVideos = filteredVideos.map((video) => {
     return (
       <div className='youtube-video' key={video.key}>
@@ -11,8 +15,11 @@ function VideoLinks({ videos }) {
       </div>
     );
   });
-
   return <div className="button-container">{renderedVideos}</div>;
- }
+};
 
- export default VideoLinks;
+VideoLinks.propTypes = {
+  videos: PropTypes.array.isRequired
+};
+
+

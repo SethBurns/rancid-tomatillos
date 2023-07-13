@@ -1,18 +1,23 @@
-import './YouTubePlayer.css'
-import React from 'react'
-import YouTube from 'react-youtube'
+// YouTubePlayer.js //
 
-const YouTubePlayer = ({id}) => {
+import './YouTubePlayer.css';
+import React from 'react';
+import YouTube from 'react-youtube';
+import PropTypes from 'prop-types';
 
-    const opts = {
-      height: '225',
-      width: '400',
-      playerVars: {
-        autoplay: 0,
-      },
-    };
+export default function YouTubePlayer({id}) {
 
-    return <YouTube videoId={id} opts={opts} />;
-  }
+  const opts = {
+    height: '225',
+    width: '400',
+    playerVars: {
+      autoplay: 0,
+    },
+  };
 
-export default YouTubePlayer;
+  return <YouTube videoId={id} opts={opts} />;
+};
+
+YouTubePlayer.propTypes = {
+  id: PropTypes.string.isRequired
+};

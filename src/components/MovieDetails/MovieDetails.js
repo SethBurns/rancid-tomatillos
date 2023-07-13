@@ -7,7 +7,7 @@ import VideoLinks from '../VideoLinks/VideoLinks'
 import PropTypes from 'prop-types'
 
 export default function MovieDetails({ findMovie, selectedMovie, videos }) {
-  console.log(videos)
+
   const {id} = useParams()
 
   useEffect(() => {
