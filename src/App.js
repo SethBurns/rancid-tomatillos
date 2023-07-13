@@ -2,7 +2,6 @@
 
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
-// import movieData from './Data';
 import Header from './components/Header/Header';
 import Movies from './components/Movies/Movies';
 import MovieDetails from './components/MovieDetails/MovieDetails';
@@ -43,15 +42,12 @@ function App() {
     }
   }
 
-  useEffect(() => {
-    getMovies();
-  }, []);
-
   const findMovie = async (id) => {
     const url1 = `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`;
     const url2 = `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}/videos`;
     setError('');
     setSelectedMovie('');
+    setVideos('');
 
     try {
       const response1 = await fetch(url1);
@@ -86,7 +82,6 @@ function App() {
         <p>{error}</p>
         <Routes>
           <Route path="/" element = {<Movies movies={movies} findMovie={findMovie} />}></Route>
-          {/* <Route path="/:id" element={<MovieDetails movie={selectedMovie} returnHome={returnHome}/>}></Route> */}
           <Route path="/:id" element={<MovieDetails selectedMovie={selectedMovie} findMovie={findMovie} videos={videos}/>}></Route>
         </Routes>
       </main>

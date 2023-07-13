@@ -1,9 +1,5 @@
 /* Poster.css */
 
-::-webkit-scrollbar {
-  width: 0px;
-}
-
 .poster {
   flex-shrink: 0;
   width: 300px;
