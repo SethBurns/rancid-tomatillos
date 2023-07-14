@@ -8,6 +8,7 @@ import Header from './components/Header/Header';
 import Movies from './components/Movies/Movies';
 import MovieDetails from './components/MovieDetails/MovieDetails';
 import { useState, useEffect } from 'react';
+import getMovies from './api-calls/api-calls';
 
 function App() {
 
@@ -21,26 +22,14 @@ function App() {
   // API CALLS //
 
   useEffect(() => {
-    getMovies();
+    getMovies()
+      .then(data => {
+        setMovies(data.movies)
+      })
+      .catch(error => {
+        setError(error)
+      })
   }, []);
-
-  const getMovies = async () => {
-    const url = `https://rancid-tomatillos.herokuapp.com/api/v2/movies`;
-    setError('');
-
-    try {
-      const response = await fetch(url);
-      if (response.ok) {
-        const movieResponse = await response.json();
-        setMovies(movieResponse.movies);
-      } else {
-        console.log(response)
-        setError(`${response.status} ${response.statusText}`);
-      }
-      } catch (error) {
-      setError(error.message);
-    }
-  }
 
   const findMovie = async (id) => {
     const url1 = `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`;
