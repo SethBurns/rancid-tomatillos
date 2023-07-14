@@ -11,7 +11,7 @@ function getMovies() {
 };
 
 function getMovie(id, setError, setSelectedMovie, setVideos) {
-  const url1 = `https://rancid-tomatilllos.herokuapp.com/api/v2/movies/${id}`;
+  const url1 = `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`;
   const url2 = `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}/videos`;
   setError('');
   setSelectedMovie('');
