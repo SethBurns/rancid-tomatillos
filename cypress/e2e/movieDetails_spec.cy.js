@@ -17,6 +17,6 @@ describe('movie details spec', () => {
       req.url = newURL;
     }).as('modifiedRequest');
     cy.visit('localhost:3000/1013860')
-    .get(".App").contains("p", "Failed to fetch")
+    .get(".App").contains("p", "Something went wrong: Failed to Fetch")
   })
 })

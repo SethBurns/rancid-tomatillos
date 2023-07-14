@@ -38,7 +38,7 @@ export default function MovieDetails({ findMovie, selectedMovie, videos }) {
         </div>
       </div>
     );
-  }
+  } 
 }
 
 MovieDetails.propTypes = {
