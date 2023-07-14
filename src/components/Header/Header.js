@@ -10,4 +10,4 @@ export default function Header () {
       <span className="header_icon">🍅</span>
     </div>
   )
-}
+};

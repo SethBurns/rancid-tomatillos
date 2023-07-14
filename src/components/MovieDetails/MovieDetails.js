@@ -4,8 +4,10 @@ import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import './MovieDetails.css'
 import VideoLinks from '../VideoLinks/VideoLinks'
+import PropTypes from 'prop-types'
 
 export default function MovieDetails({ findMovie, selectedMovie, videos }) {
+
   const {id} = useParams()
 
   useEffect(() => {
@@ -36,5 +38,17 @@ export default function MovieDetails({ findMovie, selectedMovie, videos }) {
         </div>
       </div>
     );
-  }
+  } 
+}
+
+MovieDetails.propTypes = {
+  findMovie: PropTypes.func.isRequired,
+  selectedMovie: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object
+  ]),
+  videos: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.array
+  ])
 }

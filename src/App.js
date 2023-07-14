@@ -1,11 +1,14 @@
 // App.js //
 
+// IMPORTS //
+
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Movies from './components/Movies/Movies';
 import MovieDetails from './components/MovieDetails/MovieDetails';
 import { useState, useEffect } from 'react';
+import { getMovies, getMovie } from './api-calls/api-calls';
 
 function App() {
 
@@ -16,72 +19,45 @@ function App() {
   const [error, setError] = useState('');
   const [videos, setVideos] = useState([]);
 
-
-
   // API CALLS //
 
   useEffect(() => {
-    getMovies();
+    getMovies()
+      .then(data => {
+        setMovies(data.movies)
+      })
+      .catch(error => {
+        setError(`Something went wrong: ${error.message}`)
+      })
   }, []);
 
-  const getMovies = async () => {
-    const url = `https://rancid-tomatillos.herokuapp.com/api/v2/movies`;
-    setError('');
+  function findMovie(id) {
+   const [response1, response2] = getMovie(id, setError, setSelectedMovie, setVideos)
+    response1.then(data => {
+      setSelectedMovie(data.movie)
+    })
+    .catch(error => {
+      console.log(error)
+      setError(`Something went wrong: ${error.message}`)
+    })
 
-    try {
-      const response = await fetch(url);
-      if (response.ok) {
-        const movieResponse = await response.json();
-        setMovies(movieResponse.movies);
-      } else {
-        console.log(response)
-        setError(`${response.status} ${response.statusText}`);
-      }
-      } catch (error) {
-      setError(error.message);
-    }
+    response2.then(data => {
+      setVideos(data.videos)
+    })
+    .catch(error => {
+      setError(`Something went wrong: ${error.message}`)
+    })
+
   }
 
-  const findMovie = async (id) => {
-    const url1 = `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`;
-    const url2 = `https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}/videos`;
-    setError('');
-    setSelectedMovie('');
-    setVideos('');
-
-    try {
-      const response1 = await fetch(url1);
-      if (response1.ok) {
-        const movieResponse = await response1.json();
-        setSelectedMovie(movieResponse.movie);
-        console.log(selectedMovie);
-      } else {
-        console.log(response1);
-        setError(`${response1.status} ${response1.statusText}`);
-      }
-    } catch (error) {
-      setError(error.message);
-    }
-    try {
-      const response2 = await fetch(url2);
-      if (response2.ok) {
-      const videosResponse = await response2.json();
-      setVideos(videosResponse.videos)
-      } else {
-        console.log(response2)
-        setError(`${response2.status} ${response2.statusText}`)
-      }
-    } catch (error) {
-      setError(error.message);
-    }
-  };
+  // RENDER //
 
   return (
       <main className="App">      
         <Header/>
         <p>{error}</p>
         <Routes>
-          <Route path="/" element = {<Movies movies={movies} findMovie={findMovie} />}></Route>
+          <Route path="/" element = {<Movies movies={movies} />}></Route>
           <Route path="/:id" element={<MovieDetails selectedMovie={selectedMovie} findMovie={findMovie} videos={videos}/>}></Route>
         </Routes>
       </main>
