@@ -38,14 +38,14 @@ function App() {
     })
     .catch(error => {
       console.log(error)
-      setError(`Something went wrong: ${error.message}`)
+      setError(error.message)
     })
 
     response2.then(data => {
       setVideos(data.videos)
     })
     .catch(error => {
-      setError(`Something went wrong: ${error.message}`)
+      setError(error.message)
     })
 
   }
