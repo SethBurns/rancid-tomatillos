@@ -8,3 +8,9 @@
   border: solid rgb(104, 103, 103) 4px;
   border-radius: 10px;
 }
+
+@media screen and (max-width: 480px) {
+  .movies-container {
+    width: 90%;
+  }
+}
