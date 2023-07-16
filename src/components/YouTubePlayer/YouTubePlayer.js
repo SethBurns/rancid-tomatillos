@@ -8,8 +8,8 @@ import PropTypes from 'prop-types';
 export default function YouTubePlayer({id}) {
 
   const opts = {
-    height: '225',
-    width: '400',
+    height: '197',
+    width: '350',
     playerVars: {
       autoplay: 0,
     },

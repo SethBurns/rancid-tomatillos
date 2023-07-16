@@ -22,6 +22,10 @@
   font-size: 2vw;
 }
 
+.movie_details_middle {
+  width: 40vw;
+}
+
 h1 {
   font-size: 2.5vw;
 }
@@ -41,6 +45,9 @@ h1 {
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     -webkit-text-stroke: 0px black;
     overflow: scroll;
+  }
+  .movie_details_middle {
+    width: auto;
   }
 }
 
