@@ -21,7 +21,8 @@ function Movies({movies}) {
   })
 
   return (
-    <div className='movies-container'>
+    <div className='movies_container'>
+      {!movies.length && <p>We are so sorry, no movies match your search!</p>}
       {moviePosters}
     </div>
   )

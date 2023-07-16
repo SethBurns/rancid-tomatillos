@@ -1,6 +1,6 @@
 /* Movies.css */
 
-.movies-container {
+.movies_container {
   display: flex;
   overflow-x: scroll;
   width: 95%;
@@ -10,7 +10,7 @@
 }
 
 @media screen and (max-width: 480px) {
-  .movies-container {
+  .movies_container {
     width: 90%;
   }
 }
