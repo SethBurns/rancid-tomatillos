@@ -1,0 +1,22 @@
+.search_input {
+  height: 30px;
+  margin: 5px 10px;
+  border-radius: 5px;
+  border: solid;
+  border-color: black;
+}
+
+input[type=text]:focus {
+  outline: white;
+  background-color: black;
+  color: white;
+  border: solid;
+  border-color: white;
+}
+
+button {
+  background-color: black;
+  color: white;
+  height: 30px;
+  border-radius: 5px;
+}

@@ -3,7 +3,7 @@
 // IMPORTS //
 
 import './App.css';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Movies from './components/Movies/Movies';
 import MovieDetails from './components/MovieDetails/MovieDetails';
@@ -59,11 +59,12 @@ function App() {
   return (
       <main className="App">      
         <Header />
-        <Search setFilteredMovies={setFilteredMovies} movies={movies} filteredMovies={filteredMovies}/>
+        <Search setFilteredMovies={setFilteredMovies} movies={movies} filteredMovies={filteredMovies} />
         <p>{error}</p>
         <Routes>
           <Route path="/" element = {<Movies movies={movies} />}></Route>
           <Route path="/search/:searchTerm" element={<Movies movies={filteredMovies} />}></Route>
+          <Route path="/search" element={<Navigate to ="/" />}></Route>
           <Route path="/:id" element={<MovieDetails selectedMovie={selectedMovie} findMovie={findMovie} videos={videos}/>}></Route>
         </Routes>
       </main>
