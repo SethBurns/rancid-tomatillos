@@ -11,7 +11,7 @@ export default function VideoLinks({ videos }) {
   const renderedVideos = filteredVideos.map((video) => {
     return (
       <div className='youtube-video' key={video.key}>
-        <YouTubePlayer id={video.key} />
+        <YouTubePlayer className="youtube-player" id={video.key} />
       </div>
     );
   });

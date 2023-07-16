@@ -17,6 +17,14 @@ describe('movie details spec', () => {
       req.url = newURL;
     }).as('modifiedRequest');
     cy.visit('localhost:3000/1013860')
-    .get(".App").contains("p", "Something went wrong: Failed to Fetch")
+    .get(".App").contains("p", "Failed to fetch")
+  })
+  it('should show an error if given a 500 status code', () => {
+    cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/934641', {statusCode: 500})
+
+    cy.visit('http://localhost:3000/')
+
+    cy.get('#934641').click()
+    .get(".App").contains("p", "500: Something went horribly wrong 🐒")
   })
 })

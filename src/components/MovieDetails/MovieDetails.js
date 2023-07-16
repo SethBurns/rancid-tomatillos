@@ -16,7 +16,7 @@ export default function MovieDetails({ findMovie, selectedMovie, videos }) {
 
   if (selectedMovie && videos) {
     return (
-      <div className="movie_details" style={{ backgroundImage: `url(${selectedMovie?.backdrop_path})` }}>
+      <div className="movie_details" style={{ backgroundImage: `url(${selectedMovie.backdrop_path})` }}>
         <div className="btn_div">
           <Link to="/"><button className="btn_exit">X</button></Link>
         </div>

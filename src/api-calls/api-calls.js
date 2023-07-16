@@ -21,7 +21,7 @@ function getMovie(id, setError, setSelectedMovie, setVideos) {
   fetch(url1)
     .then(response => {
       if (!response.ok) {
-        throw new Error('something went wrong')
+        throw new Error(`${response.status}: Something went horribly wrong 🐒`)
       }
       return response.json();
     })
@@ -29,7 +29,7 @@ function getMovie(id, setError, setSelectedMovie, setVideos) {
    const response2 = fetch(url2)
     .then(response => {
       if (!response.ok) {
-        throw new Error('something went wrong')
+        throw new Error(`${response.status}: Something went horribly wrong 🐒`)
       }
       return response.json();
   })
