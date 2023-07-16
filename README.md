@@ -1,70 +1,68 @@
-# Getting Started with Create React App
+# Rancid Tomatillos
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## by Jamie Caudill & Seth Burns
 
-## Available Scripts
+### DESCRIPTION
 
-In the project directory, you can run:
+Rancid tomatillos is a web-based application that allows users to scroll through a list of movies, select a movie, and see that movies details. Details include a variety of information about the movie as well as playable trailers for the movie. Users may also search for a specific movie using the application's search functionality. In addition, the application design is responsive across small, medium, and large breakpoints.
 
-### `npm start`
+### LINKS
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Project spec: [Spec](https://frontend.turing.edu/projects/module-3/rancid-tomatillos-v3.html)
+Project repo: [Repo](https://github.com/SethBurns/rancid-tomatillos)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Tech Stack
 
-### `npm test`
+- React
+- Cypress
+- Router
+- CSS
+- NPM
+- Git
+- Fetch API
+- WAVE
+- Lighthouse
+- GitHub Projects
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### LEARNING GOALS
 
-### `npm run build`
+- Exposure to React hooks such as useState and useEffect
+- Indroduce Cypress and Router
+- Collaborative workflow
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### SETUP
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Clone the repository to your local machine
+1. `cd` into the project
+1. Run `npm i` and `npm start`
+1. Enjoy!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### TESTING
 
-### `npm run eject`
+This project utilizes Cypress, a popular end-to-end testing framework for web applications.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### PREVIEW
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+![app preview](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYzRtcXczOTl0ZDRlZXA1cHc0ZHVvb2IzbWJ1aHBxM3luamo4bGVldiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/CNIqFYFIwzG1XF5yMN/giphy.gif)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### CONTEXT
 
-## Learn More
+This project was the first project in Mod 3 of Turing School of Software and Design's Front End Developer course. This project was assigned to help us gain exposure and experience to React, Cypress, and Router as well as improve our collaborative workflow. 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Challenges/Wins
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Challenges:
 
-### Code Splitting
+- Learning and implementing three new technologies in the space of two weeks
+- Proper time management and organization with increasingly reduced guidelines in the spec
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Wins:
 
-### Analyzing the Bundle Size
+- Learning and implementing three new technologies in the space of two weeks 
+- Seeing improvement in collaborative workflow 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### CONTRIBUTORS
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Jamie Caudill: <https://github.com/JamieCaudill>
+- Seth Burns: <https://github.com/SethBurns>
